@@ -1,0 +1,24 @@
+{
+  "name": "magnetsage-test",
+  "version": "1.0.0",
+  "description": "magnettest mongodb test",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "magnettest",
+    "mongodb",
+    "test"
+  ],
+  "author": "prashant barman",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "mongoose": "^6.1.1",
+    "randomstring": "^1.2.1"
+  }
+}
