@@ -2,7 +2,7 @@ let mongoose = require('../db');
 let randomstring = require('randomstring');
 
 let classSchema = mongoose.Schema({
-    class_name: { type: String, required: true, maxLength: 255 },
+    class_name: { type: String, required: true, unique: true, maxLength: 255 },
     class_code: { type: String, required: true, minLength: 6, maxLength: 6 },
     class_number: { type: Number, required: true, min: 1, max: 12 },
     is_primary: { type: Boolean, default: true },
@@ -250,8 +250,11 @@ module.exports = {
             }, 
             {
                 "$pull": { 
-                    "lectures.$.schedule": { subject_code: subjectCode }
+                    "lectures.$[lecture].schedule.$[schedule]": subjectCode 
                 }
+            },
+            {
+                arrayFilters: [ { "lecture.date": new Date(lectureDate) }, { "schedule.subject_code": subjectCode } ]
             })
             .exec();
             return true;
